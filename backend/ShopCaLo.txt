@@ -1,0 +1,114 @@
+Table users {
+  id int [primary key]
+  email varchar
+  password varchar
+  name varchar
+  role int
+  avatar varchar
+  phone int 
+  created_at datetime
+  updated_at datetime
+}
+
+Table categories {
+  id int [pk]
+  name varchar
+  image text
+}
+
+Table products {
+  id int [pk]
+  name varchar
+  price int
+  old_price int
+  image text
+  description text
+  specification text
+  buyturn int /* To count of how many times the product has been purchased */
+  quantity int
+  brand_id int
+  category_id int
+  created_at datetime
+  updated_at datetime
+}
+Ref: "categories"."id" < "products"."category_id"
+
+Table brands {
+  id int [pk]
+  name varchar
+  image text
+}
+Ref: "brands"."id" < "products"."brand_id"
+
+Table feedbacks {
+  id int [primary key]
+  product_id int
+  user_id int
+  star int
+  content text
+  created_at datetime
+  updated_at datetime
+}
+Ref: "products"."id" < "feedbacks"."product_id"
+Ref:"users"."id" < "feedbacks"."user_id"
+
+Table orders {
+  id int [primary key]
+  user_id int
+  status int
+  note text
+  total int
+  created_at datetime
+  updated_at datetime
+}
+Ref: "users"."id" < "orders"."user_id"
+
+Table order_details {
+  id int [primary key]
+  order_id int
+  product_id int
+  price int
+  quantity int
+  created_at datetime
+  updated_at datetime
+}
+Ref:"orders"."id" < "order_details"."order_id"
+
+Table news {
+  id int [primary key]
+  title varchar
+  image text
+  content text
+  created_at datetime
+  updated_at datetime
+}
+
+Table news_details {
+  id int [primary key]
+  product_id int
+  news_id int
+  created_at datetime
+  updated_at datetime
+}
+Ref: "news"."id" < "news_details"."news_id"
+Ref: "products"."id" < "news_details"."product_id"
+Ref: "products"."id" < "order_details"."product_id"
+
+Table banners {
+  id int [primary key]
+  name varchar
+  image text
+  status int
+  created_at datetime
+  updated_at datetime
+}
+
+Table banner_details {
+  id int [primary key]
+  product_id int
+  banner_id int
+  created_at datetime
+  updated_at datetime
+}
+Ref: "products"."id" < "banner_details"."product_id"
+Ref: "banners"."id" < "banner_details"."banner_id"

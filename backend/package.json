@@ -1,0 +1,29 @@
+{
+  "name": "shopcalo",
+  "version": "1.0.0",
+  "description": "Backend for Website ShopCaLo",
+  "main": "server.js",
+  "engines":{
+    "node": ">=22.x"
+  },
+  "scripts": {
+    "dev": "nodemon --inspect --exec babel-node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hoanglongdev",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.3",
+    "nodemon": "^3.1.7",
+    "sequelize": "^6.37.5",
+    "sequelize-cli": "^6.6.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.26.0",
+    "@babel/node": "^7.26.0",
+    "@babel/preset-env": "^7.26.0"
+  }
+}
